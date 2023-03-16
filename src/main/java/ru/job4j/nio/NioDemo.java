@@ -18,7 +18,7 @@ public class NioDemo {
     private static final String FILE = "data/nio.txt";
     private static final int CAPACITY = 1024;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         int count;
         try (SeekableByteChannel byteChannel =
                      Files.newByteChannel(Paths.get(FILE))) {
@@ -28,7 +28,7 @@ public class NioDemo {
                 if (count != -1) {
                     buffer.rewind();
                     for (int i = 0; i < count; i++) {
-                        System.out.print((char) buffer.get());
+                        System.out.print(buffer.asCharBuffer());
                     }
                 }
             } while (count != -1);
